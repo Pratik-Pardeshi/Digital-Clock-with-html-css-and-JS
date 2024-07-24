@@ -1,0 +1,46 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #0f0f0f;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+.container {
+    text-align: center;
+}
+
+.clock {
+    background: #333333;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.time {
+    font-size: 5rem;
+    letter-spacing: 0.1rem;
+}
+
+.date {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+
+footer {
+    background: #222222;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer-content p {
+    margin: 5px 0;
+    color: #ccc;
+}

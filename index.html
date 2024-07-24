@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratik's Digital Clock</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background: linear-gradient(135deg, #000428, #004e92); /* Dark blue gradient */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #00ffcc;
+            margin: 20px 0;
+            position: absolute;
+            top: 20px;
+            text-align: center;
+        }
+
+        .clock-container {
+            text-align: center;
+        }
+
+        .clock {
+            background: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+            display: inline-block;
+        }
+
+        .time {
+            font-size: 6rem;
+            letter-spacing: 0.15rem;
+            color: #00ffcc;
+            text-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+        }
+
+        .date {
+            font-size: 2rem;
+            margin-top: 15px;
+            color: #00ccff;
+            text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            border-top: 2px solid #00ffcc;
+        }
+
+        .footer-content p {
+            margin: 5px 0;
+            color: #ccc;
+        }
+
+        .footer-content p a {
+            color: #00ffcc;
+            text-decoration: none;
+        }
+
+        .footer-content p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pratik's Digital Clock</h1>
+    <div class="clock-container">
+        <div class="clock" id="clock">
+            <div class="time" id="time"></div>
+            <div class="date" id="date"></div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <p>Created by Pratik Pardeshi</p>
+            <p>Contact me at: <a href="mailto:pspardeshi2002@gmail.com">pspardeshi2002@gmail.com</a> | Mo. No.: <a href="tel:9763168031">9763168031</a></p>
+        </div>
+    </footer>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+
+            // Convert 24-hour format to 12-hour format
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // The hour '0' should be '12'
+
+            const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+            const dateString = `${day}-${month}-${year}`;
+
+            document.getElementById('time').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
+        }
+
+        function initClock() {
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        window.onload = initClock;
+    </script>
+</body>
+</html>
